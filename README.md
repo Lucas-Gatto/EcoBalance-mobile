@@ -5,6 +5,7 @@ COMO INICIAR PROJETO (Mobile)
 - Ainda no terminal: npm run android
 
 COMO INICIAR BACKEND
+- Veja se o .env tem conteúdo, se não, entre em contato com o Ricardo
 - Em um outro terminal: npm i
 - cd backend
 - npm run dev

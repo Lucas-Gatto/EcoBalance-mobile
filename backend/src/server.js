@@ -1,6 +1,10 @@
+const dns = require('node:dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']); // Google Public DNS
+
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const { connectDB } = require('./database/connection');
 
 dotenv.config();
 
@@ -12,13 +16,18 @@ app.use(express.json());
 
 // Rota de teste
 app.get('/', (req, res) => {
-  res.json({ message: 'EcoBalance Backend is running!' });
+  res.json({ message: 'Backend do EcoBalance está rodando!' });
 });
 
 // Importar rotas aqui (exemplo)
 // const userRoutes = require('./routes/userRoutes');
 // app.use('/api/users', userRoutes);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+async function startServer() {
+  await connectDB();
+  app.listen(port, () => {
+    console.log(`🚀 Servidor rodando na porta ${port}`);
+  });
+}
+
+startServer();
