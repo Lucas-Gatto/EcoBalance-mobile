@@ -13,7 +13,13 @@ export function TabNavigator() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: "#4CAF50",
-        tabBarInactiveTintColor: "gray",
+        tabBarInactiveTintColor: "white",
+        tabBarStyle: {
+          backgroundColor: "#a7c596", // cor de fundo da barra
+          height: 60,                 // altura da barra
+          borderTopLeftRadius: 10,    // arredondar cantos
+          borderTopRightRadius: 10,
+        },
       }}
     >
       <Tab.Screen name="Calculos" component={TelaCalculos} />
