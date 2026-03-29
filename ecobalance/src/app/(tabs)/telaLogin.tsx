@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Button, View, Text, TextInput, TouchableOpacity } from "react-native";
+import { Image, Button, View, Text, TextInput, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import type { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../navigation/stackNavigator"
+import { BotaoEntrar } from "@/src/components/botaoEntrar";
+import { styles } from "../../styles/logo";
+import { stylesTelaLogin } from "../../styles/telaLoginStyles";
 
 type NavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 
@@ -18,27 +21,30 @@ export default function TelaLogin() {
   };
 
   return (
-    <View>
-      <Text>Login</Text>
+    <View style={stylesTelaLogin.telaLoginContainer}>
+      <Image source={require("../../assets/Logo.png")} style={styles.logo} />
+      <Text>Seja Bem Vindo de Volta</Text>
+      <Text>Faça seu Login</Text>
 
+      <Text>E-mail</Text>
       <TextInput
-        placeholder="Usuário"
+        placeholder="Digite seu e-mail"
         value={usuario}
         onChangeText={setUsuario}
       />
-
+      <Text>Senha</Text>
       <TextInput
-        placeholder="Senha"
+        placeholder="Digite sua senha"
         value={senha}
         onChangeText={setSenha}
         secureTextEntry
       />
 
-      <Button title="Entrar" onPress={handleLogin} />
-      
+      <BotaoEntrar onPress={handleLogin} />
+
       <TouchableOpacity onPress={() => navigation.navigate("TelaEsqueciSenha")}>
-              <Text>Esqueci minha senha</Text>
-            </TouchableOpacity>
+        <Text>Esqueci minha senha</Text>
+      </TouchableOpacity>
     </View>
   );
 }

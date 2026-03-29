@@ -1,11 +1,33 @@
-import { Button } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
+type BotaoSairProps = { // Define os tipos de props que o componente espera. Assim, quando alguém usar o BotaoConcluir, o TypeScript vai garantir que a função onPress seja passada corretamente.
+  onPress: () => void;
+  navigation?: any;
+};
 
-export function BotaoSair() {
+export function BotaoSair({ onPress }: BotaoSairProps) {
     return (
-        <Button
-            title="Sair"
+        <TouchableOpacity
+            style={styles.botaoSair}
             onPress={() => console.log("Botão Sair pressionado")}
-        />
+        >
+            <Text style={styles.texto}>Sair</Text>
+        </TouchableOpacity>
     );
 }
+
+const styles = StyleSheet.create({
+    botaoSair: {
+        backgroundColor: '#659E43',
+        alignSelf: 'center',
+        padding: 10,
+        width: '50%',
+        borderRadius: 50,
+        alignItems: 'center',
+        marginTop: 20,
+    },
+    texto: {
+        color: '#fff',
+        fontWeight: 'bold',
+    },
+});

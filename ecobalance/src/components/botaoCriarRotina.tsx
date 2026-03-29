@@ -1,10 +1,33 @@
-import { Button } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-export function BotaoCriarRotina() {
+type BotaoCriarRotinaProps = { // Define os tipos de props que o componente espera. Assim, quando alguém usar o BotaoConcluir, o TypeScript vai garantir que a função onPress seja passada corretamente.
+  onPress: () => void;
+  navigation?: any;
+};
+
+export function BotaoCriarRotina({ onPress }: BotaoCriarRotinaProps) {
     return (
-        <Button
-            title="Criar Rotina"
+        <TouchableOpacity
+            style={styles.BotaoCriarRotina}
             onPress={() => console.log("Botão Criar Rotina pressionado")}
-        />
+        >
+            <Text style={styles.texto}>Criar Rotina</Text>
+        </TouchableOpacity>
     );
 }
+
+const styles = StyleSheet.create({
+    BotaoCriarRotina: {
+        backgroundColor: '#659E43',
+        alignSelf: 'center',
+        padding: 10,
+        width: '50%',
+        borderRadius: 50,
+        alignItems: 'center',
+        marginTop: 20,
+    },
+    texto: {
+        color: '#fff',
+        fontWeight: 'bold',
+    },
+});

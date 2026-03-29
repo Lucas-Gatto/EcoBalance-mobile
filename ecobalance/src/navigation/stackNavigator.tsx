@@ -15,7 +15,7 @@ import TelaRecuperacaoSenha from '../app/(tabs)/telaRecuperacaoSenha';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-// Definindo os tipos de parâmetros para cada tela (TypeScript precisa disso para navegação tipada corretamente)
+// Definindo os tipos de parâmetros para cada tela (TypeScript precisa disso para navegação tipada ocorrer corretamente)
 export type RootStackParamList = {
     TelaInicial: undefined;
     TelaLogin: undefined;
@@ -35,7 +35,8 @@ export type RootStackParamList = {
 // Configurando o Stack Navigator
 export default function MyStack() {
     return (
-        <Stack.Navigator initialRouteName="TelaRecuperacaoSenha" screenOptions={{ headerShown: false }}>
+        // O initialRouteName define qual tela será exibida primeiro quando o aplicativo for iniciado
+        <Stack.Navigator initialRouteName="TelaLogin" screenOptions={{ headerShown: false }}> 
             <Stack.Screen name="TelaInicial" component={TelaInicial} />
             <Stack.Screen name="TelaLogin" component={TelaLogin}  />
             <Stack.Screen name="TelaCadastro" component={TelaCadastro} />
