@@ -17,16 +17,16 @@ export default function TelaInicial() {
     navigation.navigate("TelaCadastro");
   };
 
-  const imagens = [
-    require("../../assets/frame1.png"),
-    require("../../assets/arvore.png"),
+  const slides = [
+    { imagem: require("../../assets/frame1.png"), texto: "Entenda seu impacto" },
+    { imagem: require("../../assets/arvore.png"), texto: "Conquiste!" }
   ];
 
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % imagens.length);
+      setIndex((prevIndex) => (prevIndex + 1) % slides.length);
     }, 5000); // troca a cada 3 segundos
 
     return () => clearInterval(interval);
@@ -34,10 +34,11 @@ export default function TelaInicial() {
 
   return (
     <View style={stylesTelaInicial.container}>
-      <Text style={fonte.titulo}>Olá, esta é a tela inicial!</Text>
 
       {/* Carrossel de imagens */}
-      <Image source={imagens[index]} style={stylesTelaInicial.imagem} />
+      <Text style={fonte.titulo}>{slides[index].texto}</Text>
+      <Image source={slides[index].imagem} style={stylesTelaInicial.imagem} />
+       
 
       {/* Botões */}
       <BotaoCriarConta onPress={handleCriarConta} />

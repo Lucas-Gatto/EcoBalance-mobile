@@ -2,8 +2,11 @@ import { StyleSheet } from "react-native";
 
 export const fonte = StyleSheet.create({
   titulo: {
-    fontSize: 20,
+    color:"#2D462E",
+    fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
+    fontFamily: "Jost-Bold",
+    
   },
 });
