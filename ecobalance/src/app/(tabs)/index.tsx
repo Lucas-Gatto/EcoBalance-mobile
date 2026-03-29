@@ -7,9 +7,10 @@ import { IndexStyles } from "@/src/styles";
 export default function App() {
   return (
 
-      <View style={IndexStyles.container}>
-        <MyStack /> 
-      </View>
+    <View style={IndexStyles.container}>
+      <MyStack />
+
+    </View>
 
   );
 }

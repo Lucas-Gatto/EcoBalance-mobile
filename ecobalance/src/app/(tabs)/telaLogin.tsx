@@ -7,7 +7,7 @@ import { BotaoEntrar } from "@/src/components/botaoEntrar";
 import { styles } from "../../styles/logo";
 import { stylesTelaLogin } from "../../styles/telaLoginStyles";
 
-type NavigationProp = StackNavigationProp<RootStackParamList, "Home">;
+type NavigationProp = StackNavigationProp<RootStackParamList, "MainTabs">;
 
 export default function TelaLogin() {
   const [usuario, setUsuario] = useState('');
@@ -16,7 +16,7 @@ export default function TelaLogin() {
 
 
   const handleLogin = () => {
-    navigation.navigate("Home");
+    navigation.navigate("MainTabs");
     console.log("Usuário logado com sucesso!");
   };
 

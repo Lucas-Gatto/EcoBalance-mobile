@@ -9,7 +9,7 @@ export function BotaoSair({ onPress }: BotaoSairProps) {
     return (
         <TouchableOpacity
             style={styles.botaoSair}
-            onPress={() => console.log("Botão Sair pressionado")}
+            onPress={onPress}
         >
             <Text style={styles.texto}>Sair</Text>
         </TouchableOpacity>

@@ -8,7 +8,7 @@ import type { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "@/src/navigation/stackNavigator";
 
 
-type NavigationProp = StackNavigationProp<RootStackParamList, "Home">;
+type NavigationProp = StackNavigationProp<RootStackParamList, "MainTabs">;
 
 export default function TelaCadastro() {
 
@@ -20,7 +20,7 @@ export default function TelaCadastro() {
 
 
     const handleLogin = () => {
-        navigation.navigate("Home");
+        navigation.navigate("MainTabs");
         console.log("Usuário cadastrado com sucesso!");
     };
 

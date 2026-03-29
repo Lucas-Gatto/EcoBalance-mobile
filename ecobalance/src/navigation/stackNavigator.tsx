@@ -12,8 +12,11 @@ import TelaConquistas from "../app/(tabs)/telaConquistas";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TelaEsqueciSenha from '../app/(tabs)/telaEsqueciSenha';
 import TelaRecuperacaoSenha from '../app/(tabs)/telaRecuperacaoSenha';
+import { TabNavigator } from './tabNavigator';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+
+
 
 // Definindo os tipos de parâmetros para cada tela (TypeScript precisa disso para navegação tipada ocorrer corretamente)
 export type RootStackParamList = {
@@ -21,7 +24,7 @@ export type RootStackParamList = {
     TelaLogin: undefined;
     TelaCadastro: undefined;
     TelaCarregamento: undefined;
-    Home: undefined;
+
     TelaRotina: undefined;
     TelaCriarRotina: undefined;
     TelaCalculos: undefined;
@@ -29,6 +32,7 @@ export type RootStackParamList = {
     TelaConquistas: undefined;
     TelaEsqueciSenha: undefined;
     TelaRecuperacaoSenha: undefined;
+    MainTabs: undefined;
 
 };
 
@@ -36,19 +40,18 @@ export type RootStackParamList = {
 export default function MyStack() {
     return (
         // O initialRouteName define qual tela será exibida primeiro quando o aplicativo for iniciado
-        <Stack.Navigator initialRouteName="TelaCadastro" screenOptions={{ headerShown: false }}> 
+        <Stack.Navigator initialRouteName="TelaCadastro" screenOptions={{ headerShown: false }}>
             <Stack.Screen name="TelaInicial" component={TelaInicial} />
-            <Stack.Screen name="TelaLogin" component={TelaLogin}  />
+            <Stack.Screen name="TelaLogin" component={TelaLogin} />
             <Stack.Screen name="TelaCadastro" component={TelaCadastro} />
             <Stack.Screen name="TelaCarregamento" component={TelaCarregamento} />
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="TelaRotina" component={TelaRotina} />
-            <Stack.Screen name="TelaCriarRotina" component={TelaCriarRotina} />
             <Stack.Screen name="TelaCalculos" component={TelaCalculos} />
-            <Stack.Screen name="TelaPerfil" component={TelaPerfil} />
             <Stack.Screen name="TelaConquistas" component={TelaConquistas} />
             <Stack.Screen name="TelaEsqueciSenha" component={TelaEsqueciSenha} />
             <Stack.Screen name="TelaRecuperacaoSenha" component={TelaRecuperacaoSenha} />
+
+            {/* A tela "MainTabs" é onde o Tab Navigator é renderizado, permitindo a navegação entre as abas principais do aplicativo */}
+            <Stack.Screen name="MainTabs" component={TabNavigator} />
 
 
         </Stack.Navigator>

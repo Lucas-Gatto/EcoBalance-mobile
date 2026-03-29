@@ -9,7 +9,7 @@ export function BotaoCriarConta({ onPress }: BotaoCriarContaProps) {
     return (
         <TouchableOpacity
             style={styles.BotaoCriarConta}
-            onPress={() => console.log("Botão Criar Conta pressionado")}
+            onPress={onPress}
         >
             <Text style={styles.texto}>Criar Conta</Text>
         </TouchableOpacity>

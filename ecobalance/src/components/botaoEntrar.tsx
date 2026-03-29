@@ -9,7 +9,7 @@ export function BotaoEntrar({ onPress }: BotaoEntrarProps) {
     return (
         <TouchableOpacity
             style={styles.botaoEntrar}
-            onPress={() => console.log("Botão Entrar pressionado")}
+            onPress={onPress}
         >
             <Text style={styles.texto}>Entrar</Text>
         </TouchableOpacity>
