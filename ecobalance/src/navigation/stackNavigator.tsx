@@ -49,6 +49,7 @@ export default function MyStack() {
             <Stack.Screen name="TelaConquistas" component={TelaConquistas} />
             <Stack.Screen name="TelaEsqueciSenha" component={TelaEsqueciSenha} />
             <Stack.Screen name="TelaRecuperacaoSenha" component={TelaRecuperacaoSenha} />
+            <Stack.Screen name="TelaCriarRotina" component={TelaCriarRotina} />
 
             {/* A tela "MainTabs" é onde o Tab Navigator é renderizado, permitindo a navegação entre as abas principais do aplicativo */}
             <Stack.Screen name="MainTabs" component={TabNavigator} />

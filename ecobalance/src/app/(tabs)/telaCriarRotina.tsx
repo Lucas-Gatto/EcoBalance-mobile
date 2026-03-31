@@ -1,8 +1,64 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "@/src/navigation/stackNavigator";
+import { ProgressBar } from "@/src/components/barraRolagem";
+import { BotaoAvancar } from "@/src/components/botaoAvancar";
+import NomeRotina from "./criarRotina/nomeRotina";
+import  DietaRotina  from "./criarRotina/dietaRotina";
+import { BotaoRetornar } from "@/src/components/botaoRetornar";
+
 
 export default function TelaCriarRotina() {
-    return (
-        <Text>Olá, esta é a tela de criar rotina!</Text>
-    );
+
+    const [index, setIndex] = useState(1);
+
+    const handleAvancar = () => {
+        if (index <3){
+            setIndex(index+1)
+        } 
+    }
+    const handleVoltar = () => {
+        if (index>1){
+            setIndex(index-1)
+        }
+    }
+
+
+  return (
+    <View>
+        <View>
+            <Text>Crie sua Rotina</Text>
+            <View>
+                <View>
+                    <Text>Passo {index}: </Text>
+                    <Text>
+                        {index === 1 && "Nome"}
+                        {index === 2 && "Dieta"}
+                        {index === 3 && "Transporte"}
+                    </Text>
+                </View>
+                <Text>{index}/3</Text>
+            </View>
+            <ProgressBar progresso={index / 3} />
+        </View>
+
+        <View>
+            <View>
+                {index === 1 && <NomeRotina/>}
+                {index === 2 && <DietaRotina/>}
+            </View>
+        </View>
+
+        <View>
+            {index > 1 && (
+                <BotaoRetornar onPress={handleVoltar}/>
+            )}
+            <BotaoAvancar onPress={handleAvancar}/>
+        </View>
+
+
+    </View>
+  );
 }
