@@ -10,23 +10,32 @@ const authController = require('../controllers/authController');
  */
 
 /**
+/**
  * @swagger
  * /api/auth/register:
  *   post:
  *     summary: Cadastra um novo usuário
- *     description: Rota para criar uma nova conta de usuário (Ainda não implementado).
+ *     description: Cria uma nova conta de usuário
  *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nome:
+ *                 type: string
+ *                 example: Juriscreide
+ *               email:
+ *                 type: string
+ *                 example: exemplo@email.com
+ *               senha:
+ *                 type: string
+ *                 example: 123456
  *     responses:
- *       501:
- *         description: Cadastro ainda não implementado.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Cadastro ainda não implementado.
+ *       201:
+ *         description: Usuário criado com sucesso
  */
 router.post('/register', authController.registerUser);
 
@@ -35,19 +44,24 @@ router.post('/register', authController.registerUser);
  * /api/auth/login:
  *   post:
  *     summary: Realiza o login do usuário
- *     description: Rota para autenticação e geração de token (Ainda não implementado).
+ *     description: Autentica o usuário e retorna um token
  *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: exemplo@email.com
+ *               senha:
+ *                 type: string
+ *                 example: 123456
  *     responses:
- *       501:
- *         description: Login ainda não implementado.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Login ainda não implementado.
+ *       200:
+ *         description: Login realizado com sucesso
  */
 router.post('/login', authController.loginUser);
 

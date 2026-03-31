@@ -1,24 +1,69 @@
-/**
- * Controlador de Autenticação
- * Aqui ficarão as lógicas de login e cadastro.
- */
+const User = require("../models/User");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-// Esqueleto da função de cadastro (vazia/apenas estrutura)
+//Cadastro
 const registerUser = async (req, res) => {
-  // @TODO: Implementar lógica de criação de usuário no banco de dados
-  
-  return res.status(501).json({
-    message: "Cadastro ainda não implementado."
-  });
+  try {
+    const { nome, email, senha } = req.body;
+
+    //Verifica se já existe
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: "Email já cadastrado" });
+    }
+
+    //Criptografia de senha
+    const hashedPassword = await bcrypt.hash(senha, 10);
+
+    //Cria usuário
+    const user = new User({
+      nome,
+      email,
+      senha: hashedPassword
+    });
+
+    await user.save();
+
+    return res.status(201).json({
+      message: "Usuário criado com sucesso"
+    });
+
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
 };
 
-// Esqueleto da função de login (vazia/apenas estrutura)
+//Login
 const loginUser = async (req, res) => {
-  // @TODO: Implementar lógica de verificação de credenciais e geração de token
-  
-  return res.status(501).json({
-    message: "Login ainda não implementado."
-  });
+  try {
+    const { email, senha } = req.body;
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "Usuário não encontrado" });
+    }
+
+    const isMatch = await bcrypt.compare(senha, user.senha);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Senha inválida" });
+    }
+
+    //Gerar token
+    const token = jwt.sign(
+      { id: user._id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    return res.json({
+      message: "Login realizado com sucesso",
+      token
+    });
+
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
 };
 
 module.exports = {
