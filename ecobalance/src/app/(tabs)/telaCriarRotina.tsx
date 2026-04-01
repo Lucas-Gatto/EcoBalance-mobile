@@ -12,6 +12,7 @@ import Gas from "./criarRotina/gasRotina";
 import TransporteRotina from "./criarRotina/veiculosRotina";
 import EnergiaRotina from "./criarRotina/energiaRotina";
 import ViagemRotina from "./criarRotina/viagensRotina";
+import { BotaoConcluir } from "@/src/components/botaoConcluir";
 
 
 export default function TelaCriarRotina() {
@@ -19,7 +20,7 @@ export default function TelaCriarRotina() {
     const [index, setIndex] = useState(1);
 
     const handleAvancar = () => {
-        if (index <7){
+        if (index <4){
             setIndex(index+1)
         } 
     }
@@ -29,8 +30,12 @@ export default function TelaCriarRotina() {
         }
     }
 
+
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
   return (
     <View>
+        <BotaoRetornar onPress={() => navigation.goBack()}/>
         <View>
             <Text>Crie sua Rotina</Text>
             <View>
@@ -41,13 +46,11 @@ export default function TelaCriarRotina() {
                         {index === 2 && "Dieta"}
                         {index === 3 && "Gás"}
                         {index === 4 && "Transporte"}
-                        {index === 5 && "Energia Elétrica"}
-                        {index === 6 && "Viagens"}
                     </Text>
                 </View>
-                <Text>{index}/7</Text>
+                <Text>{index}/4</Text>
             </View>
-            <ProgressBar progresso={index / 7} />
+            <ProgressBar progresso={index / 4} />
         </View>
 
         <View>
@@ -56,8 +59,6 @@ export default function TelaCriarRotina() {
                 {index === 2 && <DietaRotina/>}
                 {index === 3 && <Gas/>}
                 {index === 4 && <TransporteRotina/>}
-                {index === 5 && <EnergiaRotina/>}
-                {index === 6 && <ViagemRotina/>}
             </View>
         </View>
 
@@ -65,7 +66,12 @@ export default function TelaCriarRotina() {
             {index > 1 && (
                 <BotaoRetornar onPress={handleVoltar}/>
             )}
+            {index<4 && (
             <BotaoAvancar onPress={handleAvancar}/>
+            )}
+            {index===4 && (
+            <BotaoConcluir onPress={()=>console.log("Salvar")}/>
+            )}
         </View>
 
 
