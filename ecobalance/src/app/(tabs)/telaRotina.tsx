@@ -6,6 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "@/src/navigation/stackNavigator";
 import api from "../../services/api";
+import { stylesGeral } from "@/src/styles/stylesGeral";
+import { stylesTelaRotina } from "@/src/styles/telaRotinaStyle";
 
 export default function TelaRotina() {
 
@@ -61,16 +63,18 @@ export default function TelaRotina() {
     // #endregion
 
     return (   
-        <View style={{ flex: 1, padding: 20 }}>
-            <View style={{ alignItems: 'center', marginBottom: 20 }}>
+        <View style={stylesGeral.telaInteira}>
+            <View style={stylesTelaRotina.cabecarioTela}>
+                <View style={stylesTelaRotina.rotinaIconContainer}>
                 <Image 
-                    source={require('../../assets/rotinalogo.png')}
-                    style={{ width: 100, height: 100, resizeMode: 'contain' }}
+                    source={require('../../assets/iconRotina.png')}
+                    style={stylesTelaRotina.rotinaIcon}
                 />
-                <Text style={fonte.titulo}>Rotinas</Text>
+                </View>
+                <Text style={stylesGeral.tituloPagina}>Rotinas</Text>
             </View>
 
-            <Text style={{ fontSize: 16, marginBottom: 10 }}>Rotinas Criadas Anteriormente:</Text>
+            <Text style={stylesGeral.subTituloPagina}>Rotinas Criadas Anteriormente:</Text>
             
             <FlatList 
                 data={rotinas} 

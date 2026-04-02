@@ -13,6 +13,7 @@ export function TabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarShowLabel: false,
         headerShown: false,
         tabBarActiveTintColor: "#4CAF50",
         tabBarInactiveTintColor: "white",
@@ -44,7 +45,7 @@ export function TabNavigator() {
         style={[
           stylesGeral.icon,
           { tintColor: focused ? coresBase.verdeSaturado : coresBase.verdeBebe },
-          {width: 38, height: 35}
+          {width: 42, height: 42}
         ]}
       />
     )
@@ -74,7 +75,7 @@ export function TabNavigator() {
         style={[
           stylesGeral.icon,
           { tintColor: focused ? coresBase.verdeSaturado : coresBase.verdeBebe },
-          {width: 35, height: 35}
+          {width: 38, height: 38}
         ]}
       />
     )
@@ -88,8 +89,8 @@ export function TabNavigator() {
         source={require("../assets/iconPerfil.png")} 
         style={[
           stylesGeral.icon,
-          { width: 23
-            , height: 23 },
+          { width: 30
+            , height: 30 },
           { tintColor: focused ? coresBase.verdeSaturado : coresBase.verdeBebe }
         ]}
       />

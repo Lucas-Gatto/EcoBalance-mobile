@@ -1,4 +1,5 @@
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { stylesGeral } from "../styles/stylesGeral";
 
 type BotaoCriarRotinaProps = { // Define os tipos de props que o componente espera. Assim, quando alguém usar o BotaoConcluir, o TypeScript vai garantir que a função onPress seja passada corretamente.
   onPress: () => void;
@@ -8,25 +9,9 @@ type BotaoCriarRotinaProps = { // Define os tipos de props que o componente espe
 export function BotaoCriarRotina({ onPress }: BotaoCriarRotinaProps) {
     return (
         <TouchableOpacity
-            style={styles.BotaoCriarRotina}
+            style={stylesGeral.botaoGrande}
             onPress={onPress} >
-            <Text style={styles.texto}>Criar Rotina</Text>
+            <Text style={stylesGeral.textoBotaogrande}>+ Criar Rotina</Text>
         </TouchableOpacity>
     );
 }
-
-const styles = StyleSheet.create({
-    BotaoCriarRotina: {
-        backgroundColor: '#659E43',
-        alignSelf: 'center',
-        padding: 10,
-        width: '50%',
-        borderRadius: 50,
-        alignItems: 'center',
-        marginTop: 20,
-    },
-    texto: {
-        color: '#fff',
-        fontWeight: 'bold',
-    },
-});
