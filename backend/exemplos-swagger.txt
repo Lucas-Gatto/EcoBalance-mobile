@@ -110,7 +110,6 @@ TESTES / CÁLCULOS
 8) POST /api/testes
 Exemplo de body:
 {
-  "usuario": "ID_DO_USUARIO_AQUI",
   "rotina": "ID_DA_ROTINA_AQUI",
   "energiaEletrica": {
     "kwh": 180
@@ -142,7 +141,15 @@ usuarioId = ID_DO_USUARIO_AQUI
 USUÁRIO
 ==================================================
 
-10) PUT /api/users/me
+10) GET /api/users/me
+Não precisa body.
+Só precisa estar autenticado com Bearer Token.
+
+11) GET /api/users/me/conquistas
+Não precisa body.
+Só precisa estar autenticado com Bearer Token.
+
+12) PUT /api/users/me
 Exemplo de body:
 {
   "nome": "Usuário Atualizado",
@@ -153,7 +160,7 @@ Exemplo de body:
   "idioma": "pt"
 }
 
-11) DELETE /api/users/me
+13) DELETE /api/users/me
 Não precisa body.
 Só precisa estar autenticado com Bearer Token.
 

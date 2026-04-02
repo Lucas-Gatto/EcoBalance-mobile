@@ -1,6 +1,5 @@
 const TesteDeUsuario = require('../models/TesteDeUsuario');
 const Rotina = require('../models/Rotina');
-const User = require('../models/User');
 
 // Fatores de emissão específicos do Teste (Mensais)
 const FATORES_TESTE = {
@@ -41,10 +40,15 @@ const getFatorViagem = (tipo) => {
  */
 exports.createTeste = async (req, res) => {
     try {
-        const { usuario, rotina: rotinaId, energiaEletrica, gasNatural, viagem } = req.body;
+        const { rotina: rotinaId, energiaEletrica, gasNatural, viagem } = req.body;
+        const usuarioId = req.authUserId;
+
+        if (!usuarioId) {
+            return res.status(401).json({ message: 'Usuário não autenticado.' });
+        }
 
         // 1. Busca a rotina base para pegar as emissões já calculadas nela
-        const rotinaBase = await Rotina.findById(rotinaId);
+        const rotinaBase = await Rotina.findOne({ _id: rotinaId, usuarioId });
         if (!rotinaBase) {
             return res.status(404).json({ message: 'Rotina base não encontrada.' });
         }
@@ -93,7 +97,7 @@ exports.createTeste = async (req, res) => {
 
         // 6. Prepara o objeto para salvar
         const novoTeste = new TesteDeUsuario({
-            usuario,
+            usuario: usuarioId,
             rotina: rotinaId,
             energiaEletrica: {
                 kwh: energiaEletrica?.kwh || 0,

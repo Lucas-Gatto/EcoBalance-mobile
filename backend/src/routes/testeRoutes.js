@@ -29,9 +29,6 @@ router.use(authMiddleware);
  *           schema:
  *             type: object
  *             properties:
- *               usuario:
- *                 type: string
- *                 example: "id_do_usuario_aqui"
  *               rotina:
  *                 type: string
  *                 description: "ID da Rotina Base escolhida"

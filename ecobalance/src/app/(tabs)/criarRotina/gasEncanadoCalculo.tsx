@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
-export default function GasEncanado (){
-
-    const [gasEncanado, setGasEncanado] = useState('')
+export default function GasEncanado ({ calculoData, updateCalculo }: any){
 
     return (
 
@@ -16,8 +14,8 @@ export default function GasEncanado (){
                 <TextInput
                     style={{borderWidth: 1, borderColor: '#bbb', padding: 10, marginTop: 10}}
                     placeholder="Ex: 15.5"
-                    value={gasEncanado}
-                    onChangeText={setGasEncanado}
+                    value={calculoData.gasNatural.m3}
+                    onChangeText={(text) => updateCalculo('gasNatural', { ...calculoData.gasNatural, m3: text })}
                     keyboardType="numeric"
                 />
             </View>

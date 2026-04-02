@@ -15,6 +15,34 @@ router.use(authMiddleware);
 /**
  * @swagger
  * /api/users/me:
+ *   get:
+ *     summary: Busca os dados do usuário autenticado
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Dados do usuário retornados com sucesso.
+ */
+router.get('/me', userController.getMe);
+
+/**
+ * @swagger
+ * /api/users/me/conquistas:
+ *   get:
+ *     summary: Busca as conquistas do usuário autenticado
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Conquistas do usuário retornadas com sucesso.
+ */
+router.get('/me/conquistas', userController.getMinhasConquistas);
+
+/**
+ * @swagger
+ * /api/users/me:
  *   put:
  *     summary: Atualiza os dados do usuário autenticado
  *     tags: [Users]

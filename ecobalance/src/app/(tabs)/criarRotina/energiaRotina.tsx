@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
-export default function EnergiaRotina (){
-
-    const [energiaEletrica, setEnergiaEletrica] = useState('')
+export default function EnergiaRotina ({ calculoData, updateCalculo }: any){
 
     return (
 
@@ -14,8 +12,8 @@ export default function EnergiaRotina (){
             <View>
                 <Text>Digite o valor de kWh da sua última conta de energia elétrica:</Text>
                 <TextInput
-                value={energiaEletrica}
-                onChangeText={setEnergiaEletrica}
+                value={calculoData.energiaEletrica.kwh}
+                onChangeText={(text) => updateCalculo('energiaEletrica', { ...calculoData.energiaEletrica, kwh: text })}
                 keyboardType="numeric"
                 style={{borderWidth: 1, borderColor: '#bbb'}}/>
             </View>

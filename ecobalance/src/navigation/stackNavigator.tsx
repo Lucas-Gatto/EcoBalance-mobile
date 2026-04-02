@@ -33,7 +33,15 @@ export type RootStackParamList = {
     TelaConquistas: undefined;
     TelaEsqueciSenha: undefined;
     TelaRecuperacaoSenha: undefined;
-    ResultadoCalculo: undefined;
+    ResultadoCalculo: {
+        rotinaNome?: string;
+        teste: {
+            emissaoTotal: number;
+            emissaoAlimentos: number;
+            emissaoGas: number;
+            emissaoVeiculos: number;
+        };
+    };
     MainTabs: undefined;
 
 };

@@ -1,56 +1,43 @@
-      
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import TransporteSeletor from "./transporte";
 
-export default function ViagemRotina() {
-  const [fezViagem, setFezViagem] = useState<boolean | null>(null);
-  const [internacional, setInternacional] = useState<boolean | null>(null);
-  
-  // Alterado para Record para ser compatível com o TransporteSeletor
-  const [kmViagens, setKmViagens] = useState<Record<string, number>>({});
+export default function ViagemRotina({ calculoData, updateCalculo }: any) {
+  const viagem = calculoData.viagem;
+  const fezViagem = viagem.fezViagem;
+  const internacional = viagem.internacional;
+  const kmViagens = viagem.veiculos.reduce((acc: Record<string, number>, veiculo: any) => {
+    acc[veiculo.tipo] = veiculo.km;
+    return acc;
+  }, {});
 
-  // Lista baseada exatamente no enum da sua Model (respeitando acentos)
   const opcoesVeiculos = [
     'Carro', 'Carro elétrico', 'Moto', 'Ônibus', 
     'Metrô', 'Trem', 'Avião', 'Barco/cruzeiro'
   ];
 
   const toggleVeiculo = (nome: string, selecionado: boolean) => {
-    setKmViagens(prev => {
-      const novo = { ...prev };
-      if (selecionado) {
-        novo[nome] = 0;
-      } else {
-        delete novo[nome];
-      }
-      return novo;
+    const veiculosAtualizados = selecionado
+      ? [...viagem.veiculos, { tipo: nome, km: 0 }]
+      : viagem.veiculos.filter((veiculo: any) => veiculo.tipo !== nome);
+
+    updateCalculo('viagem', {
+      ...viagem,
+      veiculos: veiculosAtualizados
     });
   };
 
   const atualizarKm = (nome: string, val: string) => {
-    setKmViagens(prev => ({
-      ...prev,
-      [nome]: parseFloat(val) || 0
-    }));
-  };
+    const veiculosAtualizados = viagem.veiculos.map((veiculo: any) =>
+      veiculo.tipo === nome
+        ? { ...veiculo, km: parseFloat(val) || 0 }
+        : veiculo
+    );
 
-  // Função para preparar os dados para o MongoDB (Converte Map para Array)
-  const salvarDados = () => {
-    const veiculosParaBanco = Object.entries(kmViagens).map(([tipo, km]) => ({
-      tipo,
-      km,
-      emissao: km * 0.12 // Fator de exemplo
-    }));
-
-    const payload = {
-      viagem: {
-        fezViagem,
-        internacional,
-        veiculos: veiculosParaBanco
-      }
-    };
-    console.log("Enviando ao Banco:", payload);
+    updateCalculo('viagem', {
+      ...viagem,
+      veiculos: veiculosAtualizados
+    });
   };
 
   return (
@@ -63,7 +50,7 @@ export default function ViagemRotina() {
         <Text>Fez alguma viagem no último mês?</Text>
         <View style={{ flexDirection: 'row', gap: 10, marginTop: 10 }}>
           <TouchableOpacity 
-            onPress={() => setFezViagem(true)}
+            onPress={() => updateCalculo('viagem', { ...viagem, fezViagem: true })}
             style={{
               padding: 10,
               backgroundColor: fezViagem === true ? '#2e7d32' : '#ccc',
@@ -75,9 +62,11 @@ export default function ViagemRotina() {
 
           <TouchableOpacity 
             onPress={() => { 
-              setFezViagem(false); 
-              setInternacional(null);
-              setKmViagens({}); 
+              updateCalculo('viagem', {
+                fezViagem: false,
+                internacional: false,
+                veiculos: []
+              });
             }}
             style={{
               padding: 10,
@@ -95,7 +84,7 @@ export default function ViagemRotina() {
           <Text style={{ marginBottom: 10 }}>Foi uma viagem internacional?</Text>
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <TouchableOpacity 
-              onPress={() => setInternacional(true)}
+              onPress={() => updateCalculo('viagem', { ...viagem, internacional: true })}
               style={{
                 padding: 10,
                 backgroundColor: internacional === true ? '#2e7d32' : '#ccc',
@@ -106,7 +95,7 @@ export default function ViagemRotina() {
             </TouchableOpacity>
 
             <TouchableOpacity 
-              onPress={() => setInternacional(false)}
+              onPress={() => updateCalculo('viagem', { ...viagem, internacional: false })}
               style={{
                 padding: 10,
                 backgroundColor: internacional === false ? '#2e7d32' : '#ccc',

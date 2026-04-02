@@ -1,32 +1,28 @@
 import { BotaoRetornar } from "@/src/components/botaoRetornar";
 import { RootStackParamList } from "@/src/navigation/stackNavigator";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { useNavigation } from "expo-router";
-import React, { useState } from "react";
+import React from "react";
 import { View, Text } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
 
 export default function ResultadoCalculo (){
-
-    const [resultadoCalculo] = useState('')
-    const [resultadoAlimentos] = useState('')
-    const [resultadoGas] = useState('')
-    const [resultadoVeiculos] = useState('')
-
 const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+const route = useRoute<RouteProp<RootStackParamList, "ResultadoCalculo">>();
+const { teste, rotinaNome } = route.params;
 
     return (
         <View>
             <BotaoRetornar onPress={() => navigation.goBack()}/>
             <Text>Resultado:</Text>
+            {rotinaNome ? <Text>Rotina utilizada: {rotinaNome}</Text> : null}
 
             <View>
-                <Text>Resultado Total:{resultadoCalculo}</Text>
+                <Text>Resultado Total: {teste.emissaoTotal}</Text>
                 <View>
                     <Text>Valores por área:</Text>
-                    <Text>Alimentos: {resultadoAlimentos}</Text>
-                    <Text>Gás: {resultadoGas}</Text>
-                    <Text>Veiculos: {resultadoVeiculos}</Text>
+                    <Text>Alimentos: {teste.emissaoAlimentos}</Text>
+                    <Text>Gás: {teste.emissaoGas}</Text>
+                    <Text>Veiculos: {teste.emissaoVeiculos}</Text>
                 </View>
             </View>
 

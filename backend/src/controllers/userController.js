@@ -18,6 +18,56 @@ const sanitizeUser = (user) => ({
     updatedAt: user.updatedAt
 });
 
+exports.getMe = async (req, res) => {
+    try {
+        const usuarioId = req.authUserId;
+
+        if (!usuarioId) {
+            return res.status(401).json({ message: 'Usuário não autenticado.' });
+        }
+
+        const usuario = await User.findById(usuarioId);
+
+        if (!usuario) {
+            return res.status(404).json({ message: 'Usuário não encontrado.' });
+        }
+
+        return res.status(200).json({
+            usuario: sanitizeUser(usuario)
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Erro interno ao buscar usuário.',
+            error: error.message
+        });
+    }
+};
+
+exports.getMinhasConquistas = async (req, res) => {
+    try {
+        const usuarioId = req.authUserId;
+
+        if (!usuarioId) {
+            return res.status(401).json({ message: 'Usuário não autenticado.' });
+        }
+
+        const usuario = await User.findById(usuarioId).select('conquistas');
+
+        if (!usuario) {
+            return res.status(404).json({ message: 'Usuário não encontrado.' });
+        }
+
+        return res.status(200).json({
+            conquistas: usuario.conquistas || []
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Erro interno ao buscar conquistas do usuário.',
+            error: error.message
+        });
+    }
+};
+
 exports.updateMe = async (req, res) => {
     try {
         const usuarioId = req.authUserId;
