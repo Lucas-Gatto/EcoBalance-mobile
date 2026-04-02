@@ -30,7 +30,7 @@ export default function TelaPerfil() {
         // #region Conexão Front-Back (Logout)
         try {
             await AsyncStorage.removeItem('@EcoBalance:token');
-            navigation.navigate("TelaLogin" as never);
+            navigation.navigate("TelaCarregamento" as never);
         } catch (error) {
             Alert.alert("Erro", "Não foi possível sair.");
         }

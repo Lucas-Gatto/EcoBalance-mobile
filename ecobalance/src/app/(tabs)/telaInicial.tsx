@@ -18,8 +18,8 @@ export default function TelaInicial() {
   };
 
   const slides = [
-    { imagem: require("../../assets/frame1.png"), texto: "Entenda seu impacto", texto2:"Calcule sua pegada de carbono de forma fácil" },
-    { imagem: require("../../assets/arvore.png"), texto: "Conquiste!", texto2: "Melhore seus resultados, se mantenha ativo \ne consquiste!" }
+    { imagem: require("../../assets/imagemTelaCarregamento01.png"), texto: "Entenda seu impacto", texto2:"Calcule sua pegada de carbono de forma fácil" },
+    { imagem: require("../../assets/imagemTelaCarregamento03.png"), texto: "Conquiste!", texto2: "Melhore seus resultados, se mantenha ativo \ne consquiste!" }
   ];
 
   const [index, setIndex] = useState(0);

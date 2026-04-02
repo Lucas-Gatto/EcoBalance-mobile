@@ -49,7 +49,7 @@ export default function TelaCarregamento() {
   return (
     <View style={styles.container}>
       <Image 
-        source={require("../../assets/EcoBalanceLogo.png")} 
+        source={require("../../assets/iconLogo.png")} 
         style={styles.logo}
         resizeMode="contain"
       />
