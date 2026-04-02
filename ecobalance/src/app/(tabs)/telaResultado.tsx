@@ -1,5 +1,6 @@
 import { BotaoRetornar } from "@/src/components/botaoRetornar";
 import { RootStackParamList } from "@/src/navigation/stackNavigator";
+import { stylesGeral } from "@/src/styles/stylesGeral";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "expo-router";
 import React, { useState } from "react";
@@ -16,27 +17,29 @@ export default function ResultadoCalculo (){
 const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
     return (
-        <View>
+        <View style={stylesGeral.telaInteira}>
+            <View style={{flexDirection: 'row', marginBottom: 20}}>
             <BotaoRetornar onPress={() => navigation.goBack()}/>
-            <Text>Resultado:</Text>
+            <Text style={stylesGeral.tituloPagina}>Resultado:</Text>
+            </View>
 
             <View>
-                <Text>Resultado Total:{resultadoCalculo}</Text>
+                <Text style={[stylesGeral.subTituloPagina, {marginTop: 40, fontWeight: 900, fontSize: 25}]}>Resultado Total:{resultadoCalculo}</Text>
                 <View>
-                    <Text>Valores por área:</Text>
-                    <Text>Alimentos: {resultadoAlimentos}</Text>
-                    <Text>Gás: {resultadoGas}</Text>
-                    <Text>Veiculos: {resultadoVeiculos}</Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Valores por área:</Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Alimentos: {resultadoAlimentos}</Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Gás: {resultadoGas}</Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Veiculos: {resultadoVeiculos}</Text>
                 </View>
             </View>
 
             <View>
-                <Text>Valores Mundiais:</Text>
+                <Text style={[stylesGeral.subTituloPagina, {marginTop: 40, fontWeight: 900, fontSize: 25}]}>Valores Mundiais:</Text>
                 <View>
-                    <Text>Valores por área:</Text>
-                    <Text>Alimentos: </Text>
-                    <Text>Gás: </Text>
-                    <Text>Veiculos: </Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Valores por área:</Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Alimentos: </Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Gás: </Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Veiculos: </Text>
                 </View>
             </View>
         </View>

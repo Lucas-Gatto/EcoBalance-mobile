@@ -1,3 +1,4 @@
+import { stylesGeral } from "@/src/styles/stylesGeral";
 import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
@@ -9,12 +10,12 @@ export default function GasEncanado (){
     return (
 
         <View>
-            <Text>Consumo Mensal de Gás Natural</Text>
+            <Text style={stylesGeral.subTituloPagina}>Consumo Mensal de Gás Natural</Text>
 
             <View>
-                <Text>Digite o valor em metros cúbicos (m³) da sua última conta de gás natural:</Text>
+                <Text style={[stylesGeral.inputText, {marginTop: 10}]}>Digite o valor em metros cúbicos (m³) da sua última conta de gás natural:</Text>
                 <TextInput
-                    style={{borderWidth: 1, borderColor: '#bbb', padding: 10, marginTop: 10}}
+                    style={[stylesGeral.input2, {marginTop: 20}]}
                     placeholder="Ex: 15.5"
                     value={gasEncanado}
                     onChangeText={setGasEncanado}

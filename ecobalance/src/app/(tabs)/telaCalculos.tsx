@@ -12,6 +12,9 @@ import SelecionaRotina from "./criarRotina/selecionaRotina";
 import GasEncanado from "./criarRotina/gasEncanadoCalculo";
 import Gas from "./criarRotina/gasRotina";
 import { BotaoConcluir } from "@/src/components/botaoConcluir";
+import { stylesGeral } from "@/src/styles/stylesGeral";
+import { stylesTelaCriarRotina } from "@/src/styles/telasCriarRotinaStyle";
+import { BotaoVoltar } from "@/src/components/botaoVoltarRotina";
 
 export default function TelaCalculos() {
 
@@ -34,23 +37,25 @@ export default function TelaCalculos() {
 
     return (
         
-        <View>
+        <View style={stylesGeral.telaInteira}>
             <View>
-                <Text>Calcule sua pegada de Carbono</Text>
-                <View>
-                    <View>
-                        <Text>Passo {index}: </Text>
-                        <Text>
-                            {index === 1 && "Rotina"}
-                            {index === 2 && "Energia Elétrica"}
-                            {index === 3 && "Gás Natural"}
-                            {index === 4 && "Viagens"}
-                        </Text>
-                    </View>
-                    <Text>{index}/4</Text>
+        <View style={stylesTelaCriarRotina.cabecario}>
+            <Text style={[stylesGeral.tituloPagina, {fontSize:32}]}>Calcule sua Pegada</Text>
+        </View>
+            <View style={stylesGeral.containerPassosTexto}>
+                <View style={{flexDirection: 'row' }}>
+                    <Text style={stylesGeral.passosTexto}>Passo {index}: </Text>
+                    <Text style={stylesGeral.passosTexto}>
+                        {index === 1 && "Rotina"}
+                        {index === 2 && "Energia Elétrica"}
+                        {index === 3 && "Gás Natural"}
+                        {index === 4 && "Viagens"}
+                    </Text>
                 </View>
-                <ProgressBar progresso={index / 4} />
+                <Text style={stylesGeral.passosTexto}>{index}/4</Text>
             </View>
+            <ProgressBar progresso={index / 4} />
+        </View>
 
                     <View>
                         <View>
@@ -62,9 +67,9 @@ export default function TelaCalculos() {
                         </View>
                     </View>
             
-                    <View>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             {index > 1 && (
-                <BotaoRetornar onPress={handleVoltar}/>
+                <BotaoVoltar onPress={handleVoltar}/>
             )}
             {index<4 && (
             <BotaoAvancar onPress={handleAvancar}/>
