@@ -11,6 +11,10 @@ import ViagemRotina from "./criarRotina/viagensRotina";
 import SelecionaRotina from "./criarRotina/selecionaRotina";
 import GasEncanado from "./criarRotina/gasEncanadoCalculo";
 import { BotaoConcluir } from "@/src/components/botaoConcluir";
+import { stylesGeral } from "@/src/styles/stylesGeral";
+import { stylesTelaCriarRotina } from "@/src/styles/telasCriarRotinaStyle";
+import { BotaoVoltar } from "@/src/components/botaoVoltarRotina";
+import { ScrollView } from "react-native-gesture-handler";
 import api from "@/src/services/api";
 
 export default function TelaCalculos() {
@@ -133,23 +137,25 @@ export default function TelaCalculos() {
 
     return (
         
-        <View>
+        <ScrollView style={stylesGeral.telaInteira}>
             <View>
-                <Text>Calcule sua pegada de Carbono</Text>
-                <View>
-                    <View>
-                        <Text>Passo {index}: </Text>
-                        <Text>
-                            {index === 1 && "Rotina"}
-                            {index === 2 && "Energia Elétrica"}
-                            {index === 3 && "Gás Natural"}
-                            {index === 4 && "Viagens"}
-                        </Text>
-                    </View>
-                    <Text>{passoAtual}/{totalPassos}</Text>
+        <View style={stylesTelaCriarRotina.cabecario}>
+            <Text style={[stylesGeral.tituloPagina, {fontSize:32}]}>Calcule sua Pegada</Text>
+        </View>
+            <View style={stylesGeral.containerPassosTexto}>
+                <View style={{flexDirection: 'row' }}>
+                    <Text style={stylesGeral.passosTexto}>Passo {index}: </Text>
+                    <Text style={stylesGeral.passosTexto}>
+                        {index === 1 && "Rotina"}
+                        {index === 2 && "Energia Elétrica"}
+                        {index === 3 && "Gás Natural"}
+                        {index === 4 && "Viagens"}
+                    </Text>
                 </View>
-                <ProgressBar progresso={passoAtual / totalPassos} />
+                <Text style={stylesGeral.passosTexto}>{passoAtual}/{totalPassos}</Text>
             </View>
+            <ProgressBar progresso={passoAtual / totalPassos} />
+        </View>
 
                     <View>
                         <View>
@@ -161,9 +167,9 @@ export default function TelaCalculos() {
                         </View>
                     </View>
             
-                    <View>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: 90}}>
             {index > 1 && (
-                <BotaoRetornar onPress={handleVoltar}/>
+                <BotaoVoltar onPress={handleVoltar}/>
             )}
             {index<4 && (
             <BotaoAvancar onPress={handleAvancar}/>
@@ -173,6 +179,6 @@ export default function TelaCalculos() {
             )}
             {enviando && <Text>Calculando...</Text>}
                     </View>
-        </View>
+        </ScrollView>
     );
 }

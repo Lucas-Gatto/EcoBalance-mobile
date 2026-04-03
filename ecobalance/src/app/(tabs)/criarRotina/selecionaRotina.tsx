@@ -1,3 +1,4 @@
+import { stylesGeral } from "@/src/styles/stylesGeral";
 import React, { useEffect, useState } from "react";
 import { View, Text, ActivityIndicator, Alert } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
@@ -34,7 +35,7 @@ export default function SelecionaRotina({ calculoData, updateCalculo }: any){
     return (
 
         <View>
-            <Text>Selecione uma rotina pré cadastrada ou cadastre uma nova</Text>
+            <Text style={[stylesGeral.inputText, {marginTop:30}]}>Selecione uma rotina pré cadastrada ou cadastre uma nova</Text>
 
             <View>
                 {carregando ? (
@@ -52,7 +53,7 @@ export default function SelecionaRotina({ calculoData, updateCalculo }: any){
                         updateCalculo('rotinaNome', item.rotina.nome);
                         updateCalculo('rotinaTipoGas', item.rotina.tipoGas || '');
                     }}
-                    style={{padding: 10, borderColor: '#000', borderWidth: 1}}
+                    style={[stylesGeral.input2, {marginTop: 20}]}
                     />
                 )}
             </View>

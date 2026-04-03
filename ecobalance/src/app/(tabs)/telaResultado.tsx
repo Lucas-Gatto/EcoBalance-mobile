@@ -1,5 +1,6 @@
 import { BotaoRetornar } from "@/src/components/botaoRetornar";
 import { RootStackParamList } from "@/src/navigation/stackNavigator";
+import { stylesGeral } from "@/src/styles/stylesGeral";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
@@ -11,28 +12,29 @@ const route = useRoute<RouteProp<RootStackParamList, "ResultadoCalculo">>();
 const { teste, rotinaNome } = route.params;
 
     return (
-        <View>
+        <View style={stylesGeral.telaInteira}>
+            <View style={{flexDirection: 'row', marginBottom: 20}}>
             <BotaoRetornar onPress={() => navigation.goBack()}/>
-            <Text>Resultado:</Text>
-            {rotinaNome ? <Text>Rotina utilizada: {rotinaNome}</Text> : null}
+            <Text style={stylesGeral.tituloPagina}>Resultado:</Text>
+            </View>
 
             <View>
-                <Text>Resultado Total: {teste.emissaoTotal}</Text>
+                <Text style={[stylesGeral.subTituloPagina, {marginTop: 40, fontWeight: 900, fontSize: 25}]}>Resultado Total: {teste.emissaoTotal}</Text>
                 <View>
-                    <Text>Valores por área:</Text>
-                    <Text>Alimentos: {teste.emissaoAlimentos}</Text>
-                    <Text>Gás: {teste.emissaoGas}</Text>
-                    <Text>Veiculos: {teste.emissaoVeiculos}</Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Valores por área:</Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Alimentos: {teste.emissaoAlimentos}</Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Gás: {teste.emissaoGas}</Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Veiculos: {teste.emissaoVeiculos}</Text>
                 </View>
             </View>
 
             <View>
-                <Text>Valores Mundiais:</Text>
+                <Text style={[stylesGeral.subTituloPagina, {marginTop: 40, fontWeight: 900, fontSize: 25}]}>Valores Mundiais:</Text>
                 <View>
-                    <Text>Valores por área:</Text>
-                    <Text>Alimentos: </Text>
-                    <Text>Gás: </Text>
-                    <Text>Veiculos: </Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Valores por área:</Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Alimentos: </Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Gás: </Text>
+                    <Text style={[stylesGeral.inputText, {fontWeight: '700', marginBottom: 5, fontSize: 17, marginLeft: 20}]}>Veiculos: </Text>
                 </View>
             </View>
         </View>

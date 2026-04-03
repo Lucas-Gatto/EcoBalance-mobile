@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import TransporteSeletor from "./transporte";
+import { stylesGeral } from "@/src/styles/stylesGeral";
 
 export default function ViagemRotina({ calculoData, updateCalculo }: any) {
   const viagem = calculoData.viagem;
@@ -41,13 +42,13 @@ export default function ViagemRotina({ calculoData, updateCalculo }: any) {
   };
 
   return (
-    <ScrollView style={{ padding: 20 }}>
-      <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>
+    <ScrollView>
+      <Text style={stylesGeral.subTituloPagina}>
         Fale brevemente das viagens realizadas no último mês
       </Text>
 
-      <View style={{ marginBottom: 20 }}>
-        <Text>Fez alguma viagem no último mês?</Text>
+      <View style={{marginBottom: 20}}>
+        <Text style={stylesGeral.inputText}>Fez alguma viagem no último mês?</Text>
         <View style={{ flexDirection: 'row', gap: 10, marginTop: 10 }}>
           <TouchableOpacity 
             onPress={() => updateCalculo('viagem', { ...viagem, fezViagem: true })}
@@ -81,7 +82,7 @@ export default function ViagemRotina({ calculoData, updateCalculo }: any) {
 
       {fezViagem === true && (
         <View style={{ marginBottom: 20 }}>
-          <Text style={{ marginBottom: 10 }}>Foi uma viagem internacional?</Text>
+          <Text style={[stylesGeral.inputText, {marginBottom:10}]}>Foi uma viagem internacional?</Text>
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <TouchableOpacity 
               onPress={() => updateCalculo('viagem', { ...viagem, internacional: true })}
@@ -107,7 +108,7 @@ export default function ViagemRotina({ calculoData, updateCalculo }: any) {
           </View>
 
             <View style={{ marginTop: 20 }}>
-              <Text style={{ fontWeight: 'bold', marginBottom: 10 }}>
+              <Text style={[stylesGeral.inputText, {marginBottom: 10}]}>
                 Qual (ou quais) veículos você utilizou para viajar?
               </Text>
               <TransporteSeletor
