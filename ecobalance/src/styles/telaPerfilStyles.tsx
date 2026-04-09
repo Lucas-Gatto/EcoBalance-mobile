@@ -8,6 +8,7 @@ export const stylesTelaPerfil = StyleSheet.create({
         backgroundColor: "#fff",
     },
     cabecalho: {
+        
         flexDirection: "row",
         alignItems: "center",   
 },
@@ -23,4 +24,16 @@ export const stylesTelaPerfil = StyleSheet.create({
         alignItems: "center",
         marginBottom: 20,
     },
+    avatarContainer: {
+        alignItems: "center",
+        marginBottom: 30,
+    },
+    avatar: {
+        borderColor: "#659E43",
+        borderWidth: 5,
+        borderRadius: 100,
+        width: 150,
+        height: 150,
+    },
+
 });

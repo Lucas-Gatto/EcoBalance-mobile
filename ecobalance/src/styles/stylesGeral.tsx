@@ -29,7 +29,7 @@ export const stylesGeral = StyleSheet.create({
     },
 
     textInput : {
-        
+        width: '80%',
         height: 40,
         borderColor: "#ccc",
         borderWidth: 1,
@@ -38,6 +38,7 @@ export const stylesGeral = StyleSheet.create({
         marginBottom: 15,
         marginTop: 5,
         boxShadow: '6px 6px 12px 0px #659E43',
+        
     },
 
     telaInteira: {

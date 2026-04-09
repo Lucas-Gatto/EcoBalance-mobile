@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { BotaoSair } from "../../components/botaoSair";
 import { stylesTelaPerfil } from "../../styles/telaPerfilStyles";
 import { fonte } from "@/src/styles/fontes";
@@ -23,7 +23,7 @@ export default function TelaPerfil() {
     const [isEnabledApp, setIsEnabledApp] = useState(false);
     const toggleSwitchEmail = () => setIsEnabledEmail(previousState => !previousState);
     const toggleSwitchApp = () => setIsEnabledApp(previousState => !previousState);
-    
+
     const navigation = useNavigation<NavigationProp>();
 
     const handleSair = async () => {
@@ -40,26 +40,32 @@ export default function TelaPerfil() {
     return (
         <View style={stylesGeral.telaInteira}>
             <View style={stylesTelaPerfil.cabecalho}>
-            <Image source={require("../../assets/engrenagem.png")}/>
-            <Text style={[stylesGeral.tituloPagina, {marginTop: 20, marginBottom: 20}]}>Perfil</Text>
+                <Image source={require("../../assets/engrenagem.png")} />
+                <Text style={[stylesGeral.tituloPagina, { marginTop: 20, marginBottom: 20 }]}>Perfil</Text>
+            </View>
+            <View style={stylesTelaPerfil.avatarContainer}>
+                <Image source={require("../../assets/avatar.png")} style={stylesTelaPerfil.avatar} />
+                <TouchableOpacity>
+                    <Text  style={fonte.subtitulo}>Mudar foto</Text>
+                </TouchableOpacity>
             </View>
             <Text>Nome</Text>
             <TextInput
-                style={[stylesGeral.input2, {marginBottom: 30, marginTop: 5}]}
+                style={[stylesGeral.input2, { marginBottom: 30, marginTop: 5 }]}
                 placeholder="Digite seu nome"
                 value={usuario}
                 onChangeText={setUsuario}
             />
             <Text>E-mail</Text>
             <TextInput
-                style={[stylesGeral.input2, {marginBottom: 30, marginTop: 5}]}
+                style={[stylesGeral.input2, { marginBottom: 30, marginTop: 5 }]}
                 placeholder="Digite seu e-mail"
                 value={email}
                 onChangeText={setEmail}
             />
             <Text>Senha</Text>
             <TextInput
-                style={[stylesGeral.input2, {marginBottom: 30, marginTop: 5}]}
+                style={[stylesGeral.input2, { marginBottom: 30, marginTop: 5 }]}
                 placeholder="Digite sua senha"
                 value={senha}
                 onChangeText={setSenha}
