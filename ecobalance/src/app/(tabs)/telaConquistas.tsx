@@ -4,6 +4,7 @@ import { View, Text, Image, FlatList, Touchable, TouchableOpacity } from "react-
 import { StylesTelaConquistas } from "../../styles/telaConquistasStyles";
 import { stylesGeral } from "@/src/styles/stylesGeral";
 
+
 const conquistas = [
     {
         id: 1,
@@ -35,7 +36,7 @@ const conquistas = [
     },
 ];
 
-export default function TelaConquistas() {
+export default function Conquistas() {
     return (
         <View style={stylesGeral.telaInteira}>
             <View style={StylesTelaConquistas.cabecalho}>
@@ -57,6 +58,7 @@ export default function TelaConquistas() {
                                 alignItems: "center",
                                 marginVertical: 10,
                                 opacity: item.desbloqueado ? 1 : 0.4, // cinza se bloqueado
+                                
                             }}
                         >
                             <Image
