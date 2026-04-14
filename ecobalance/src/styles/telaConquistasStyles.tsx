@@ -6,4 +6,14 @@ export const StylesTelaConquistas = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    cabecalho: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    conquistasContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginVertical: 10,
+
+    }
 });

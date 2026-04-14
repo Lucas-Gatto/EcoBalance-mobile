@@ -13,7 +13,7 @@ export const coresBase = {
 
 export const stylesGeral = StyleSheet.create({
     icon: {
-       width: 34, 
+        width: 34,
         height: 34
     },
 
@@ -28,7 +28,7 @@ export const stylesGeral = StyleSheet.create({
         borderTopRightRadius: 10,
     },
 
-    textInput : {
+    textInput: {
         width: '80%',
         height: 40,
         borderColor: "#ccc",
@@ -38,7 +38,7 @@ export const stylesGeral = StyleSheet.create({
         marginBottom: 15,
         marginTop: 5,
         boxShadow: '6px 6px 12px 0px #659E43',
-        
+
     },
 
     telaInteira: {
@@ -83,7 +83,7 @@ export const stylesGeral = StyleSheet.create({
         fontFamily: 'Jost-Bold',
         fontSize: 20
     },
-    passosTexto:{
+    passosTexto: {
         fontFamily: "Jost-bold",
         fontSize: 15,
         marginTop: 20,
@@ -110,6 +110,13 @@ export const stylesGeral = StyleSheet.create({
         padding: 15,
         marginBottom: 15,
         boxShadow: '6px 6px 12px 0px #659E43',
+    },
+    icones: {
+        marginRight: 10,
+        width: 30,
+        height: 30,
+
     }
+
 
 });
