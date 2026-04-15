@@ -30,11 +30,11 @@ export const stylesGeral = StyleSheet.create({
 
     textInput: {
         width: '80%',
-        height: 40,
+        height: 45,
         borderColor: "#ccc",
         borderWidth: 1,
-        borderRadius: 5,
-        paddingHorizontal: 100,
+        borderRadius: 10,
+        paddingHorizontal: 10,
         marginBottom: 15,
         marginTop: 5,
         boxShadow: '6px 6px 12px 0px #659E43',
@@ -60,7 +60,6 @@ export const stylesGeral = StyleSheet.create({
         fontFamily: "Jost-bold",
         fontSize: 18,
         marginTop: 15,
-        marginLeft: 5,
         color: coresBase.verdeMedio,
         fontWeight: 600,
         marginBottom: 20
@@ -102,6 +101,7 @@ export const stylesGeral = StyleSheet.create({
     inputText: {
         fontFamily: "Jost-bold",
         fontSize: 15,
+        color: coresBase.verdeEscuro,
     },
 
     input2: {
@@ -110,13 +110,21 @@ export const stylesGeral = StyleSheet.create({
         padding: 15,
         marginBottom: 15,
         boxShadow: '6px 6px 12px 0px #659E43',
+        borderBottomWidth: 0
     },
     icones: {
         marginRight: 10,
         width: 30,
         height: 30,
 
+    },
+    subInputText: {
+        borderWidth: 1,
+        height: 40,
+        borderColor: coresBase.verdeMedio, 
+        padding: 5, 
+        marginVertical: 3, 
+        borderRadius: 10
     }
-
 
 });

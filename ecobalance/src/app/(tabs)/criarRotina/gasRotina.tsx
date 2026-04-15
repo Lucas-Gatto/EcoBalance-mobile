@@ -12,13 +12,13 @@ export default function Gas({ rotinaData, updateRotina }: any) {
         <View>
             <Text style={stylesGeral.subTituloPagina}>Fale brevemente sobre seu consumo de gás</Text>
 
-            <View style={{marginTop: 20}}>
+            <View style={{marginTop: 10}}>
                 <Text style={stylesGeral.inputText}>Quantas pessoas vivem na sua casa?</Text>
                 <TextInput
                     value={pessoas}
                     onChangeText={(text) => updateRotina('quantidadePessoas', text)}
                     keyboardType="numeric"
-                    style={stylesGeral.input2}
+                    style={[stylesGeral.input2, {marginTop: 10}]}
                 />
             </View>
 
@@ -32,7 +32,8 @@ export default function Gas({ rotinaData, updateRotina }: any) {
                             style={{
                                 padding: 10,
                                 backgroundColor: tipoGas === tipo ? '#2e7d32' : '#ccc',
-                                borderRadius: 5
+                                borderRadius: 5,
+                                marginTop: 10
                             }}
                         >
                             <Text style={{ color: 'white', fontSize: 12 }}>{tipo.toUpperCase()}</Text>
@@ -65,7 +66,8 @@ export default function Gas({ rotinaData, updateRotina }: any) {
                                     style={{
                                         padding: 10,
                                         backgroundColor: tipoBotijao === tipo.value ? '#2e7d32' : '#ccc',
-                                        borderRadius: 5
+                                        borderRadius: 5,
+                                        marginTop: 10
                                     }}
                                 >
                                     <Text style={{ color: 'white', fontSize: 12 }}>{tipo.label.toUpperCase()}</Text>

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { coresBase } from './stylesGeral';
 
 export const stylesTelaLogin = StyleSheet.create({
   telaLoginContainer: {
@@ -17,6 +18,15 @@ export const stylesTelaLogin = StyleSheet.create({
     fontStyle: "italic",
     alignSelf: "flex-start"
   },
+
+  inputText: {
+    alignSelf: 'flex-start',
+    color: coresBase.verdeEscuro,
+    marginTop: 4,
+    marginLeft: 45,
+    fontSize: 16,
+    fontWeight: '500',
+  }
 });
 
 

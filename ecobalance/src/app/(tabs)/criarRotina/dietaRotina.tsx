@@ -84,13 +84,13 @@ export default function DietaRotina({ rotinaData, updateRotina }: any) {
     }
 
     const renderInput = (label: string, value: string, onChange: (t:string) => void) =>(        
-        <View>
+        <View style={{ marginLeft: 15 }}>
             <Text style={[stylesGeral.inputText, {marginTop: 10}]}>{label}</Text>
             <TextInput
                 value={value}
                 onChangeText={onChange}
                 keyboardType="numeric"
-                style={{ borderWidth: 1, borderColor: '#bbb', padding: 5, marginVertical: 5 }}
+                style={stylesGeral.subInputText}
             />
         </View>
     )
@@ -121,7 +121,7 @@ export default function DietaRotina({ rotinaData, updateRotina }: any) {
 
             {dieta && (
                 <ScrollView>
-                    <Text style={[stylesGeral.inputText, {marginTop: 20}]}>Porções consumidas por semana:</Text>
+                    <Text style={[stylesGeral.inputText, {marginTop: 30, marginBottom: 10}]}>Porções consumidas por semana:</Text>
                     {renderCampos()}
                 </ScrollView>
             )}

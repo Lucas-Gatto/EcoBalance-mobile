@@ -38,7 +38,7 @@ export default function TransporteRotina({ rotinaData, updateRotina }: any) {
     };
 
     return (
-        <ScrollView >
+        <ScrollView>
             <Text style={stylesGeral.subTituloPagina}>Agora nos conte sobre os veículos que utiliza</Text>
 
             <View>
@@ -75,8 +75,8 @@ export default function TransporteRotina({ rotinaData, updateRotina }: any) {
                     <Text>Você possui um veículo próprio ou utiliza transporte público?</Text>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 20, marginTop: 10 }}>
                         {[
-                            { label: 'Próprio', value: 'proprio' },
-                            { label: 'Público', value: 'publico' }
+                            { label: 'PRÓPRIO', value: 'proprio' },
+                            { label: 'PÚBLICO', value: 'publico' }
                         ].map((tipo) => (
                             <TouchableOpacity
                                 key={tipo.value}
@@ -106,11 +106,11 @@ export default function TransporteRotina({ rotinaData, updateRotina }: any) {
                             labelField="label"
                             valueField="value"
                             value={tipoCombustivel}
-                            placeholder="Selecione o tipo de Combustível"
+                            placeholder=""
                             onChange={(item) => {
                                 updateRotina('combustivel', item.value);
                             }}
-                            style={stylesGeral.input2}
+                            style={[stylesGeral.input2, {marginTop: 10}]}
                         />
                     </View>
                     {tipoCombustivel === 'Elétrico' ? (
@@ -130,7 +130,7 @@ export default function TransporteRotina({ rotinaData, updateRotina }: any) {
                                 value={litrosCombutivel}
                                 onChangeText={(text) => updateRotina('litrosCombustivel', text)}
                                 keyboardType="numeric"
-                                style={stylesGeral.input2}
+                                style={[stylesGeral.input2, {marginTop: 10}]}
                             />
                         </View>
                     )}

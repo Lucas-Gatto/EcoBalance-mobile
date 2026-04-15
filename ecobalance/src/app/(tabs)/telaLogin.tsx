@@ -52,7 +52,7 @@ export default function TelaLogin() {
       <Text style={fonte.titulo}>Seja Bem Vindo de Volta!</Text>
       <Text style={fonte.subtitulo}>Faça seu Login</Text>
 
-      <Text>E-mail</Text>
+      <Text style={stylesTelaLogin.inputText}>E-mail</Text>
       <TextInput
         style={stylesGeral.textInput}
         placeholder="Digite seu e-mail"
@@ -61,7 +61,7 @@ export default function TelaLogin() {
         keyboardType="email-address"
         autoCapitalize="none"
       />
-      <Text>Senha</Text>
+      <Text style={stylesTelaLogin.inputText}>Senha</Text>
       <TextInput
         style={stylesGeral.textInput}
         placeholder="Digite sua senha"
@@ -75,7 +75,7 @@ export default function TelaLogin() {
       <LinkEsqueciSenha />
 
       <TouchableOpacity onPress={() => navigation.navigate("TelaCadastro" as never)} style={{ marginTop: 20, alignItems: 'center' }}>
-        <Text>Ainda não tem conta? Cadastre-se</Text>
+        <Text style={{textDecorationLine: 'underline', fontStyle: 'italic'}}>Ainda não tem conta? Cadastre-se</Text>
       </TouchableOpacity>
     </View>
   );

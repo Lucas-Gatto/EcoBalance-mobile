@@ -9,6 +9,8 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import type { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../navigation/stackNavigator";
 import api from "@/src/services/api";
+import { ScrollView } from "react-native-gesture-handler";
+import { stylesTelaRotina } from "@/src/styles/telaRotinaStyle";
 
 type NavigationProp = StackNavigationProp<RootStackParamList, "MainTabs">;
 
@@ -133,9 +135,11 @@ export default function TelaPerfil() {
     };
 
     return (
+        <ScrollView>
         <View style={stylesGeral.telaInteira}>
             <View style={stylesTelaPerfil.cabecalho}>
-                <Image source={require("../../assets/engrenagem.png")} />
+                <Image source={require("../../assets/engrenagem.png")} 
+                style={[stylesTelaRotina.rotinaIcon, {marginRight: 10}]}/>
                 <Text style={[stylesGeral.tituloPagina, { marginTop: 20, marginBottom: 20 }]}>Perfil</Text>
             </View>
             <View style={stylesTelaPerfil.avatarContainer}>
@@ -144,7 +148,7 @@ export default function TelaPerfil() {
                     onPress={() => setModalAvatarVisivel(true)}
                     disabled={carregandoPreferencias}
                 >
-                    <Text style={fonte.subtitulo}>Mudar foto</Text>
+                    <Text style={[fonte.subtitulo, {marginTop: 10, marginBottom: 50}]}>Mudar foto</Text>
                 </TouchableOpacity>
             </View>
             <Text>Nome</Text>
@@ -242,5 +246,6 @@ export default function TelaPerfil() {
                 </View>
             </Modal>
         </View>
+        </ScrollView>
     );
 }   

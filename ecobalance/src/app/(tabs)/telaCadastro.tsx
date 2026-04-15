@@ -9,6 +9,7 @@ import { RootStackParamList } from "@/src/navigation/stackNavigator";
 import { coresBase, stylesGeral } from "@/src/styles/stylesGeral";
 import { fonte } from "@/src/styles/fontes";
 import api from "../../services/api";
+import { stylesTelaLogin } from "@/src/styles/telaLoginStyles";
 
 type NavigationProp = StackNavigationProp<RootStackParamList, "MainTabs">;
 
@@ -54,16 +55,16 @@ export default function TelaCadastro() {
         <View style={stylesTelaCadastro.telaCadastroContainer}>
             <Image source={require("../../assets/Logo.png")} style={styles.logo} />
             <Text style={[fonte.titulo, {fontWeight: 900, color: coresBase.verdeEscuro}]}>Seja Bem Vindo</Text>
-            <Text style={stylesGeral.subTituloPagina}>Faça seu Cadastro</Text>
+            <Text style={[stylesGeral.subTituloPagina, {marginTop: -5}]}>Faça seu Cadastro</Text>
 
-            <Text>Nome</Text>
+            <Text style={stylesTelaLogin.inputText}>Nome</Text>
             <TextInput
                 style={stylesGeral.textInput}
                 placeholder="Digite seu nome"
                 value={nome}
                 onChangeText={setNome}
             />
-            <Text>Email</Text>
+            <Text style={stylesTelaLogin.inputText}>Email</Text>
             <TextInput
                 style={stylesGeral.textInput}
                 placeholder="Digite seu email"
@@ -72,7 +73,7 @@ export default function TelaCadastro() {
                 keyboardType="email-address"
                 autoCapitalize="none"
             />
-            <Text>Senha</Text>
+            <Text style={stylesTelaLogin.inputText}>Senha</Text>
             <TextInput
                 style={stylesGeral.textInput}
                 placeholder="Digite sua senha"
@@ -80,7 +81,7 @@ export default function TelaCadastro() {
                 onChangeText={setSenha}
                 secureTextEntry
             />
-            <Text>Confirme sua senha</Text>
+            <Text style={stylesTelaLogin.inputText}>Confirme sua senha</Text>
             <TextInput
                 style={stylesGeral.textInput}
                 placeholder="Confirme sua senha"
@@ -92,7 +93,7 @@ export default function TelaCadastro() {
             <BotaoCriarConta onPress={handleCadastro} />
 
             <TouchableOpacity onPress={() => navigation.navigate("TelaLogin" as never)} style={{ marginTop: 10 }}>
-                <Text>Já tem uma conta? Faça Login</Text>
+                <Text style={{textDecorationLine: 'underline', fontStyle: 'italic'}}>Já tem uma conta? Faça Login</Text>
             </TouchableOpacity>
         </View>
 

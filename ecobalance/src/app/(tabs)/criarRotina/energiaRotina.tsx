@@ -16,6 +16,7 @@ export default function EnergiaRotina ({ calculoData, updateCalculo }: any){
                 value={calculoData.energiaEletrica.kwh}
                 onChangeText={(text) => updateCalculo('energiaEletrica', { ...calculoData.energiaEletrica, kwh: text })}
                 keyboardType="numeric"
+                underlineColorAndroid="transparent"
                 style={[stylesGeral.input2, {marginTop: 15}]}/>
             </View>
         </View>

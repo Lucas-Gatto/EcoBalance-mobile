@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import Checkbox from "expo-checkbox";
-import { stylesGeral } from "@/src/styles/stylesGeral";
+import { coresBase, stylesGeral } from "@/src/styles/stylesGeral";
 
 interface TransporteSeletorProps {
   lista: string[]; // Ex: ['Carro', 'Moto']
@@ -19,7 +19,7 @@ export default function TransporteSeletor({
   titulo 
 }: TransporteSeletorProps) {
   return (
-    <View>
+    <View >
       {titulo && <Text>{titulo}</Text>}
 
       {lista.map((item) => {
@@ -32,8 +32,9 @@ export default function TransporteSeletor({
                 value={estaAtivo}
                 onValueChange={(val) => onToggle(item, val)}
                 color={estaAtivo ? "#2e7d32" : undefined}
+                style={{marginTop: 7}}
               />
-              <Text style={[stylesGeral.inputText]}>{item}</Text>
+              <Text style={[stylesGeral.inputText, {marginTop: 4}]}>{item}</Text>
             </View>
 
             {estaAtivo && (
@@ -43,7 +44,7 @@ export default function TransporteSeletor({
                   placeholder="0"
                   onChangeText={(txt) => onUpdateKm(item, txt)}
                   value={dados[item]?.toString() || "0"}
-                  style={{ borderWidth: 1, borderColor: '#bbb', padding: 2, marginVertical: 2, width: 70, textAlign: 'center', borderRadius: 10, height: 40}}
+                  style={{ borderWidth: 1, borderColor: coresBase.verdeMedio, padding: 2, marginVertical: 2, width: 70, textAlign: 'center', borderRadius: 10, height: 40}}
                 />
               </View>
             )}
