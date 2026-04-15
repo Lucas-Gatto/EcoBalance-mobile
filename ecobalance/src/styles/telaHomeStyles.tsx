@@ -7,8 +7,8 @@ export const StylesTelaHome = StyleSheet.create({
         flex: 1,
     },
     avatar: {
-        width: 60,
-        height: 60,
+        width: 70,
+        height: 70,
         borderWidth: 3,
         borderColor: coresBase.verdeMedio,
         borderRadius: 50,
@@ -17,10 +17,22 @@ export const StylesTelaHome = StyleSheet.create({
     cabecalho: {
         marginTop: 10,
         flexDirection: "row",
-        alignItems: "center",
-        paddingHorizontal: 20,
         marginBottom: 20,
-
+    },
+    titulo: {
+        fontSize: 26,
+        fontFamily: "Jost-Bold",
+        fontWeight: 900,
+        color: coresBase.verdeMedio
+    },
+    olaTitulo: {
+        fontSize: 16,
+        fontFamily: "Jost-Bold",
+        fontWeight: 600,
+        color: coresBase.verdeMedio,
+        marginTop: 4,
+        marginBottom: 5,
+        fontStyle: "italic"
     }
 });
 

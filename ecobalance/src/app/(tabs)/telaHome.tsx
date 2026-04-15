@@ -93,12 +93,14 @@ export default function TelaHome() {
 
     return (
         <View style={stylesGeral.telaInteira}>
-            <View>
-                <Text>Bem vindo ao EcoBalance</Text>
-            </View>
             <View style={StylesTelaHome.cabecalho}>
-                <Image source={avatarSources[(avatarSelecionado || 1) - 1]} style={StylesTelaHome.avatar} />
-                <Text style={fonte.titulo}>{nomeUsuario ? `Olá, ${nomeUsuario}!` : "Olá!"}</Text>
+                <View>
+                    <Image source={avatarSources[(avatarSelecionado || 1) - 1]} style={StylesTelaHome.avatar} />
+                </View>
+                <View>
+                    <Text style={StylesTelaHome.olaTitulo}>Bem vindo ao EcoBalance</Text>
+                    <Text style={[StylesTelaHome.titulo, {marginBottom: 4}]}>{nomeUsuario ? `Olá, ${nomeUsuario}!` : "Olá!"}</Text>
+                </View>
             </View>
             <FlatList
 
@@ -117,14 +119,14 @@ export default function TelaHome() {
                     >
                         <Image
                             source={item.imagemNivel}
-                            style={{ width: 200, height: 110, marginBottom: 10 }}
+                            style={{ width: 350, height: 190, marginBottom: 10}}
                         />
 
                     </View>
                 )}
             />
             <View>
-                <Text style={fonte.titulo}>Últimas Conquistas</Text>
+                <Text style={StylesTelaHome.titulo}>Últimas Conquistas</Text>
                 <FlatList
                     data={conquistas}
                     keyExtractor={(item) => item.id.toString()}
@@ -140,7 +142,7 @@ export default function TelaHome() {
                         >
                             <Image
                                 source={item.imagem}
-                                style={{ width: 40, height: 40, marginRight: 10 }}
+                                style={{ width: 40, height: 40, marginRight: 20}}
                             />
                             <View>
                                 <Text style={{ fontWeight: "bold" }}>{item.titulo}</Text>

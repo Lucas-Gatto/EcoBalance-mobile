@@ -140,7 +140,7 @@ export default function TelaCalculos() {
         <ScrollView style={stylesGeral.telaInteira}>
             <View>
         <View style={stylesTelaCriarRotina.cabecario}>
-            <Text style={[stylesGeral.tituloPagina, {fontSize:32}]}>Calcule sua Pegada</Text>
+            <Text style={[stylesGeral.tituloPagina, {marginTop: 20}]}>Calcule</Text>
         </View>
             <View style={stylesGeral.containerPassosTexto}>
                 <View style={{flexDirection: 'row' }}>
