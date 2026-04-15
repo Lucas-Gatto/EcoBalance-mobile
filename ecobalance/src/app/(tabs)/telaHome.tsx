@@ -1,4 +1,4 @@
-import { stylesGeral } from "@/src/styles/stylesGeral";
+import { coresBase, stylesGeral } from "@/src/styles/stylesGeral";
 import React, { useCallback, useState } from "react";
 import { View, Text, FlatList, Image, Alert } from "react-native";
 import { StylesTelaHome } from "../../styles/telaHomeStyles";
@@ -8,6 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import type { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../navigation/stackNavigator";
+import { ScrollView } from "react-native-gesture-handler";
 
 type NavigationProp = StackNavigationProp<RootStackParamList, "MainTabs">;
 
@@ -62,6 +63,8 @@ const niveis = [
     }
 ];
 
+
+
 export default function TelaHome() {
     const navigation = useNavigation<NavigationProp>();
     const [nomeUsuario, setNomeUsuario] = useState('');
@@ -90,9 +93,11 @@ export default function TelaHome() {
             void carregarUsuario();
         }, [carregarUsuario])
     );
+    const [scrollOffset, setScrollOffset] = useState(0);
 
     return (
-        <View style={stylesGeral.telaInteira}>
+        <ScrollView  style={stylesGeral.telaInteira}>
+        <View>
             <View style={StylesTelaHome.cabecalho}>
                 <View>
                     <Image source={avatarSources[(avatarSelecionado || 1) - 1]} style={StylesTelaHome.avatar} />
@@ -126,10 +131,18 @@ export default function TelaHome() {
                 )}
             />
             <View>
-                <Text style={StylesTelaHome.titulo}>Últimas Conquistas</Text>
+                <Text style={[StylesTelaHome.titulo, {marginTop: 20, marginBottom: 10}]}>Últimas Conquistas</Text>
                 <FlatList
+                showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={{ paddingHorizontal: 10, alignItems: 'center' }}
+                    horizontal={true}
                     data={conquistas}
                     keyExtractor={(item) => item.id.toString()}
+                    onScroll={(event) => {
+        const totalWidth = event.nativeEvent.contentSize.width - event.nativeEvent.layoutMeasurement.width;
+        const currentPos = event.nativeEvent.contentOffset.x;
+        setScrollOffset(currentPos / totalWidth); // Valor entre 0 e 1
+    }}
                     renderItem={({ item }) => (
                         <View
                             style={{
@@ -140,22 +153,32 @@ export default function TelaHome() {
 
                             }}
                         >
+                            <View style={{marginTop: 10}}>
                             <Image
                                 source={item.imagem}
-                                style={{ width: 40, height: 40, marginRight: 20}}
-                            />
-                            <View>
-                                <Text style={{ fontWeight: "bold" }}>{item.titulo}</Text>
-                                <Text>{item.descricao}</Text>
+                                style={StylesTelaHome.trofeuIcon}
+                            />  
+                                <Text style={{ fontWeight: "bold", marginRight: 30, marginTop: 10, fontSize: 13 }}>{item.titulo}</Text>
+                                {/* <Text>{item.descricao}</Text> */}
+                                
                             </View>
                         </View>
+                        
                     )}
                 />
 
-
+                    <View style={{ width: '100%', height: 7, backgroundColor: coresBase.verdeClaro, alignSelf: 'center', borderRadius: 10, marginTop: 5 }}>
+    <View style={{ 
+        width: "80%", 
+        height: '100%', 
+        backgroundColor: coresBase.verdeMedio, 
+        borderRadius: 2,
+        marginLeft: scrollOffset * 70
+    }} />
+</View>
             </View>
         </View>
-
+                    </ScrollView>
 
     );
 }

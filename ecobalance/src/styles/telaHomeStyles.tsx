@@ -33,6 +33,13 @@ export const StylesTelaHome = StyleSheet.create({
         marginTop: 4,
         marginBottom: 5,
         fontStyle: "italic"
+    },
+    trofeuIcon: {
+        width: 52, 
+        height: 52, 
+        marginRight: 20,
+        alignSelf: "center",
+        marginVertical: 5
     }
 });
 
