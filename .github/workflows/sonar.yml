@@ -3,7 +3,7 @@ name: SonarCloud Analysis
 on:
   push:
     branches:
-      - main  
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -15,8 +15,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v4
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=SUA_ORG_AQUI
+            -Dsonar.projectKey=SUA_PROJECT_KEY_AQUI
+            -Dsonar.sources=backend,ecobalance
+            -Dsonar.host.url=https://sonarcloud.io
